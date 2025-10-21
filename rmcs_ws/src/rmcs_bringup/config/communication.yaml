@@ -1,0 +1,27 @@
+rmcs_executor:
+  ros__parameters:
+    update_rate: 1000.0
+    components:
+      - rmcs_core::controller::communication::Output  ->  output  
+      - rmcs_core::controller::communication::Input  ->  input
+      - rmcs_core::broadcaster::ValueBroadcaster -> broadcaster    
+
+output:
+  ros__parameters:
+    name_sine: "/communication/sine_value"   
+    name_cosine: "/communication/cosine_value"  
+    omega: 1000.0  
+
+input:
+  ros__parameters:
+    name_sine: "/communication/sine_value"   
+    name_cosine: "/communication/cosine_value"
+    name_sum: "/communication/sum_value"  
+
+broadcaster:
+  ros__parameters:
+    forward_list:
+      - "/communication/sine_value"
+      - "/communication/cosine_value"
+      - "/communication/sum_value"
+
